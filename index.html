@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard | CrimsonFlame</title>
+    <title>Support | CrimsonFlame</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -13,82 +13,67 @@
     </svg>
 
     <nav>
-        <div class="nav-logo" onclick="window.location.href='index.html'">CrimsonFlame <span style="color:var(--text-muted); font-size:1rem;">| Dash</span></div>
+        <div class="nav-logo" onclick="window.location.href='index.html'">CrimsonFlame <span style="color:var(--text-muted); font-size:1rem;">| Support</span></div>
         <div class="nav-links">
             <a href="index.html" class="nav-btn">Hub</a>
-            <a href="chatter.html" class="nav-btn">Chatter</a>
-            <a href="dialog.html" class="nav-btn">Dialog</a>
-            <a href="support.html" class="nav-btn">Support</a>
+            <a href="dashboard.html" class="nav-btn">Dashboard</a>
         </div>
     </nav>
 
-    <main id="main-content" style="display: flex; justify-content: center; align-items: start; padding-top: 40px; position: relative; z-index: 10;">
-        
-        <div id="login-container" class="card-container" style="width: 100%; max-width: 450px;">
-            <h2 id="auth-title">Account Login</h2>
-            <form onsubmit="submitLogin(event)">
-                <input type="email" id="email" placeholder="Email Address" required>
-                <input type="password" id="password" placeholder="Password" required>
-                <button type="submit" class="btn-primary">Submit</button>
-            </form>
-            <hr style="border-color: var(--glass-border); margin: 20px 0;">
-            <button type="button" class="btn-google-sign-in" onclick="loginWithGoogle(event)">
-                <img src="https://cdn-icons-png.flaticon.com/512/300/300221.png" alt="G"> Continue with Google
-            </button>
-            <p style="text-align:center;">Don't have an account? <a onclick="toggleLoginMode()" style="cursor: pointer;">Register here</a></p>
-        </div>
-
-        <div id="dashboard-container" class="card-container" style="display: none; width: 100%; max-width: 500px;">
-            <h2>Dashboard</h2>
-            <div style="display:flex; align-items:center; gap: 15px; margin: 20px 0;">
-                <img id="dashboard-pfp-preview" src="https://cdn-icons-png.flaticon.com/512/149/149071.png" style="width: 60px; height: 60px; border-radius: 50%; object-fit: cover; border: 1px solid var(--glass-border);">
-                <div>
-                    <p style="margin:0; color:var(--text-muted);">Logged in as:</p>
-                    <strong id="user-display-email" style="font-size:1.1rem;"></strong>
-                </div>
-            </div>
-            <button class="btn-danger" style="width:auto;" onclick="logOutUser()">Logout</button>
-            
-            <hr style="border-color: var(--glass-border); margin: 20px 0;">
-            <form onsubmit="submitProfile(event)">
-                <div id="pfp-drop-zone" class="drop-zone" onclick="document.getElementById('pfp-file-input').click()">
-                    <span>Drop new image to change avatar</span>
-                    <input type="file" id="pfp-file-input" accept="image/*" style="display:none;" onchange="handleUpload(event.target.files[0], 'pfp')">
-                </div>
-                <div id="upload-status" class="status-text"></div>
-                
-                <label style="color: var(--text-muted); font-size: 0.85rem; margin-bottom: 5px; display: block;">Display Name (Seen by players)</label>
-                <input type="text" id="display-name" placeholder="Display Name">
-
-                <label style="color: var(--text-muted); font-size: 0.85rem; margin-bottom: 5px; display: block;">Username (Backend/Bans - Max 1 change per month)</label>
-                <input type="text" id="username-input" placeholder="username" style="font-family: monospace;">
-
-                <button type="submit" class="btn-primary">Save Profile Info</button>
-            </form>
-
-            <hr style="border-color: var(--glass-border); margin: 20px 0;">
-            <h3 style="color: #5865F2; margin-top: 0; display: flex; align-items: center; gap: 8px;">
-                <img src="https://assets-global.website-files.com/6257adef93867e50d84d30e2/636e0a6a49cf127bf92de1e2_icon_clyde_blurple_RGB.png" style="width: 24px;"> 
-                Discord Integration
-            </h3>
-            
-            <div id="discord-unlinked" style="display: none;">
-                <p style="color: var(--text-muted); font-size: 0.9rem;">Link your Discord account via the bot to sync your data.</p>
-                <button class="btn-secondary" onclick="generateDiscordLinkCode()" style="background: #5865F2; color: white; border: none; width: 100%;">Generate Link Code</button>
-                <p id="discord-link-code-display" style="display: none; text-align: center; font-size: 1.1rem; font-family: monospace; background: rgba(0,0,0,0.5); padding: 15px; border-radius: 8px; color: #4ade80; border: 1px dashed #5865F2; margin-top: 10px;"></p>
-            </div>
-            
-            <div id="discord-linked" style="display: none; align-items: center; gap: 12px; background: rgba(88, 101, 242, 0.1); border: 1px solid #5865F2; padding: 15px; border-radius: 12px;">
-                <img id="discord-avatar" src="" style="width: 45px; height: 45px; border-radius: 50%; border: 2px solid #5865F2;">
-                <div>
-                    <p style="margin: 0; color: #a1a1aa; font-size: 0.75rem; text-transform: uppercase; font-weight: bold;">Linked Account</p>
-                    <strong id="discord-username" style="color: #fff; font-size: 1.1rem;"></strong>
-                </div>
-                <button class="btn-danger" style="margin-left: auto; width: auto; padding: 8px 12px; font-size: 0.8rem; background: rgba(220, 20, 60, 0.2); border: 1px solid var(--crimson);" onclick="unlinkDiscord()">Unlink</button>
-            </div>
+    <main id="support-locked" style="display: flex; justify-content: center; align-items: center; height: calc(100vh - 60px); position: relative; z-index: 10;">
+        <div class="card-container" style="text-align: center; max-width: 400px;">
+            <h2>Access Denied</h2>
+            <p>You must be logged in to create support tickets.</p>
+            <button class="btn-primary" onclick="window.location.href='dashboard.html'">Go to Login</button>
         </div>
     </main>
 
+    <main id="support-system" style="display: none; padding: 40px 20px; position: relative; z-index: 10;">
+        <div id="list-view" class="card-container" style="width: 100%; max-width: 800px; margin: auto;">
+            <h2>Support Tickets</h2>
+            <div id="ticket-list" style="margin-bottom: 20px;"></div>
+            
+            <hr style="border-color: var(--glass-border); margin: 20px 0;">
+            <h3>Create New Ticket</h3>
+            <form id="ticket-form" onsubmit="submitTicket(event)">
+                <input type="text" id="ticket-subject" placeholder="Subject" required>
+                <textarea id="ticket-msg" placeholder="Describe your issue..." required style="width: 100%; height: 100px; padding: 10px; background: rgba(0,0,0,0.5); border: 1px solid var(--glass-border); color: white; border-radius: 8px; margin-bottom: 10px;"></textarea>
+                <button type="submit" class="btn-primary">Submit Ticket</button>
+            </form>
+        </div>
+
+        <div id="thread-view" class="card-container" style="display: none; width: 100%; max-width: 800px; margin: auto; height: 70vh; display: flex; flex-direction: column;">
+            <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--glass-border); padding-bottom: 10px; margin-bottom: 10px;">
+                <h3 id="active-subject" style="margin: 0;">Loading...</h3>
+                <div>
+                    <button class="btn-secondary" style="width: auto; padding: 5px 10px;" onclick="closeThreadView()">Back</button>
+                    <div id="admin-close-area" style="display: inline-block; margin-left: 10px;">
+                        <button class="btn-danger" style="width: auto; padding: 5px 10px;" onclick="closeActiveTicket()">Close Ticket</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="ticket-chat-box" style="flex: 1; overflow-y: auto; background: rgba(0,0,0,0.3); border-radius: 8px; padding: 10px; margin-bottom: 10px;"></div>
+            
+            <form id="ticket-chat-form" onsubmit="submitTicketChat(event)" style="display: flex; gap: 10px;">
+                <input type="text" id="ticket-chat-input" placeholder="Type a reply..." required style="flex: 1; margin: 0;">
+                <button type="submit" class="btn-primary" style="width: auto; padding: 0 20px;">Send</button>
+            </form>
+        </div>
+    </main>
+
+    <div id="custom-prompt" class="custom-modal-overlay">
+        <div class="custom-modal-box"><div class="custom-modal-content">
+            <h3 id="custom-prompt-title" class="custom-modal-title">Prompt</h3>
+            <p id="custom-prompt-desc" class="custom-modal-text"></p>
+            <input type="text" id="custom-prompt-input" class="custom-modal-input" autocomplete="off">
+            <div class="custom-modal-buttons">
+                <button id="custom-prompt-cancel" class="custom-modal-btn cancel" onclick="document.getElementById('custom-prompt').classList.remove('active')">Cancel</button>
+                <button id="custom-prompt-confirm" class="custom-modal-btn confirm">Confirm</button>
+            </div>
+        </div></div>
+    </div>
+    
     <div id="custom-alert" class="custom-modal-overlay">
         <div class="custom-modal-box"><div class="custom-modal-content">
             <h3 class="custom-modal-title">CrimsonFlame Alert</h3>
@@ -97,6 +82,6 @@
         </div></div>
     </div>
 
-    <script type="module" src="dashboard.js"></script>
+    <script type="module" src="support.js"></script>
 </body>
 </html>
