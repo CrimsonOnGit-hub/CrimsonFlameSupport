@@ -12,11 +12,37 @@
         <defs><filter id="goo"><feGaussianBlur in="SourceGraphic" stdDeviation="6" result="blur" /><feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 19 -9" result="goo" /><feComposite in="SourceGraphic" in2="goo" operator="atop"/></filter></defs>
     </svg>
 
-    <nav>
-        <div class="nav-logo" onclick="window.location.href='index.html'">CrimsonFlame <span style="color:var(--text-muted); font-size:1rem;">| Support</span></div>
+    <nav class="hub-nav">
+        <div class="nav-logo">
+            <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" style="width: 24px; height: 24px; filter: invert(1);"> 
+            CrimsonFlame
+        </div>
         <div class="nav-links">
-            <a href="index.html" class="nav-btn">Hub</a>
-            <a href="dashboard.html" class="nav-btn">Dashboard</a>
+            <a href="https://crimsonongit-hub.github.io/crimsonflame" class="nav-btn active">Home</a>
+            
+            <div class="nav-dropdown">
+                <a class="nav-btn">Legal ▾</a>
+                <div class="dropdown-content">
+                    <a href="https://crimsonongit-hub.github.io/crimsonflame/terms.html">Terms of Service</a>
+                    <a href="https://crimsonongit-hub.github.io/crimsonflame/privacy.html">Privacy Policy</a>
+                </div>
+            </div>
+
+            <div class="nav-dropdown">
+                <a class="nav-btn">Games ▾</a>
+                <div class="dropdown-content">
+                    <a href="https://crimsonongit-hub.github.io/crimsonflame/crimson-protocol.html">Crimson Protocol</a>
+                </div>
+            </div>
+
+            <div class="nav-dropdown">
+                <a class="nav-btn">Support ▾</a>
+                <div class="dropdown-content">
+                    <a href="https://crimsonongit-hub.github.io/CrimsonFlameSupport">Ticket System</a>
+                </div>
+            </div>
+
+            <a href="https://crimsonongit-hub.github.io/crimsonflame/dashboard.html" class="nav-btn">Dashboard</a>
         </div>
     </nav>
 
