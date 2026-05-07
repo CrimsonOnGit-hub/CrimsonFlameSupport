@@ -1,0 +1,356 @@
+/* =========================================
+   VARIABLES & GLOBALS
+   ========================================= */
+:root {
+    --crimson: #dc143c;
+    --bg-color: #050505;
+    --glass-bg: rgba(20, 20, 20, 0.85);
+    --glass-border: rgba(255, 255, 255, 0.1);
+    --text-muted: #949ba4;
+}
+
+/* =========================================
+   THEME: DEFAULT DARK (XORWIRE STYLE)
+   ========================================= */
+body {
+    background-color: var(--bg-color);
+    color: #ffffff;
+    font-family: sans-serif;
+    margin: 0;
+    min-height: 100vh;
+    
+    /* Subtle tech grid background */
+    background-image: 
+        linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+    background-size: 40px 40px;
+    background-position: center center;
+    transition: background 0.3s ease;
+}
+
+/* =========================================
+   THEME: LIQUID LIGHT OVERRIDES
+   ========================================= */
+.liquid-bg-container {
+    display: none;
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    z-index: -1;
+}
+
+html.theme-liquid-light body {
+    background: linear-gradient(45deg, #8b0000, #ff4500, #ff8c00);
+    background-size: 400% 400%;
+    animation: gradientBG 15s ease infinite;
+}
+
+html.theme-liquid-light .liquid-bg-container {
+    display: block;
+}
+
+@keyframes gradientBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* =========================================
+   NAVIGATION & DROPDOWNS
+   ========================================= */
+nav, .hub-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 40px;
+    height: 70px;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--glass-border);
+    position: relative;
+    z-index: 100;
+}
+
+.nav-logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.nav-links {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.nav-btn {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.2s;
+    padding: 10px;
+    border-radius: 6px;
+}
+
+.nav-btn:hover {
+    background: rgba(255,255,255,0.1);
+}
+
+.nav-btn.active {
+    color: var(--crimson);
+}
+
+.nav-dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #1a1a1f;
+    min-width: 180px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.5);
+    border: 1px solid var(--glass-border);
+    border-radius: 4px;
+    z-index: 200;
+    top: 100%;
+    left: 0;
+    overflow: hidden;
+}
+
+.dropdown-content a {
+    color: #dbdee1;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    font-size: 0.9rem;
+    border-bottom: 1px solid rgba(255,255,255,0.02);
+    transition: 0.2s;
+}
+
+.dropdown-content a:hover {
+    background-color: #2b2d31;
+    color: white;
+}
+
+.nav-dropdown:hover .dropdown-content {
+    display: block;
+}
+
+/* =========================================
+   UI COMPONENTS (CARDS, BUTTONS, FORMS)
+   ========================================= */
+.card-container {
+    background: var(--glass-bg);
+    backdrop-filter: blur(15px);
+    border: 1px solid var(--glass-border);
+    border-radius: 12px;
+    padding: 30px;
+    margin-bottom: 20px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+}
+
+input[type="text"], input[type="email"], input[type="password"] {
+    width: 100%;
+    padding: 12px;
+    margin: 8px 0;
+    border-radius: 6px;
+    border: 1px solid var(--glass-border);
+    background: rgba(0,0,0,0.3);
+    color: white;
+    box-sizing: border-box;
+    font-size: 1rem;
+}
+
+.btn-primary {
+    background: var(--crimson);
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 6px;
+    width: 100%;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.2s;
+}
+.btn-primary:hover { filter: brightness(1.2); }
+
+.btn-secondary {
+    background: rgba(255,255,255,0.1);
+    color: white;
+    padding: 10px 15px;
+    border: 1px solid var(--glass-border);
+    border-radius: 6px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+.btn-secondary:hover { background: rgba(255,255,255,0.2); }
+
+.btn-danger {
+    background: rgba(220, 20, 60, 0.2);
+    color: #ff4d4d;
+    border: 1px solid var(--crimson);
+    padding: 10px 15px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+.btn-danger:hover { background: var(--crimson); color: white; }
+
+/* =========================================
+   HERO SECTION (INDEX HUB)
+   ========================================= */
+.hero-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: calc(100vh - 70px);
+    text-align: center;
+}
+
+.hero-title {
+    font-size: 4rem;
+    letter-spacing: 4px;
+    margin: 0;
+    font-weight: 800;
+}
+
+.hero-subtitle {
+    font-size: 3rem;
+    line-height: 1.2;
+    margin: 10px 0 20px 0;
+    font-weight: 900;
+}
+
+.hero-description {
+    color: var(--text-muted);
+    font-size: 1.1rem;
+    max-width: 500px;
+    margin: 0 auto 40px auto;
+    line-height: 1.6;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+}
+
+.hero-btn {
+    padding: 12px 30px;
+    font-size: 1rem;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.outline-btn {
+    background: transparent;
+    border: 2px solid white;
+    color: white;
+}
+.outline-btn:hover { background: rgba(255,255,255,0.1); }
+
+.filled-btn {
+    background: transparent;
+    border: 2px solid rgba(255,255,255,0.1);
+    color: #a1a1aa;
+}
+.filled-btn:hover { color: white; border-color: white; }
+
+/* =========================================
+   CUSTOM MODALS & ALERTS
+   ========================================= */
+.custom-modal-overlay {
+    display: none;
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0,0,0,0.8);
+    z-index: 9999;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(5px);
+}
+.custom-modal-overlay.active { display: flex; }
+
+.custom-modal-box {
+    background: var(--glass-bg);
+    padding: 30px;
+    border-radius: 12px;
+    border: 1px solid var(--glass-border);
+    width: 90%;
+    max-width: 400px;
+    text-align: center;
+}
+
+.status-text {
+    padding: 10px;
+    border-radius: 6px;
+    margin-top: 10px;
+    font-weight: bold;
+    text-align: center;
+    display: none;
+}
+.status-text.success { background: rgba(74, 222, 128, 0.2); color: #4ade80; border: 1px solid #4ade80; }
+.status-text.error { background: rgba(248, 113, 113, 0.2); color: #f87171; border: 1px solid #f87171; }
+
+.drop-zone {
+    border: 2px dashed var(--glass-border);
+    padding: 20px;
+    text-align: center;
+    border-radius: 8px;
+    cursor: pointer;
+    background: rgba(0,0,0,0.2);
+    transition: 0.2s;
+}
+.drop-zone:hover { background: rgba(255,255,255,0.05); }
+
+/* =========================================
+   CHATTER SPECIFIC LAYOUT
+   ========================================= */
+.glass-wrapper {
+    display: flex;
+    flex: 1;
+    height: calc(100vh - 70px);
+    overflow: hidden;
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(10px);
+}
+
+.server-sidebar {
+    width: 70px;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex; flex-direction: column; align-items: center;
+    padding-top: 10px; gap: 10px; overflow-y: auto;
+    border-right: 1px solid var(--glass-border);
+}
+
+.channel-sidebar {
+    width: 240px;
+    background: rgba(0, 0, 0, 0.4);
+    display: flex; flex-direction: column;
+    border-right: 1px solid var(--glass-border);
+}
+
+.chat-area {
+    flex: 1;
+    display: flex; flex-direction: column;
+    background: transparent; position: relative;
+}
+
+.chat-box {
+    flex: 1; overflow-y: auto; padding: 20px;
+    display: flex; flex-direction: column; gap: 15px;
+}
+
+.chat-input-area { padding: 0 20px 20px 20px; position: relative; }
+.chat-input-wrapper {
+    background: rgba(0,0,0,0.5); border-radius: 8px;
+    display: flex; padding: 10px 15px; border: 1px solid var(--glass-border);
+}
+.chat-input-wrapper input { background: transparent; border: none; color: white; flex: 1; outline: none; font-size: 1rem; }
